@@ -1,6 +1,6 @@
 /*
  * This file is auto-generated.  DO NOT MODIFY.
- * Original file: C:\\Users\\yosi\\data\\workspace\\android\\CountdownTimer\\app\\src\\main\\aidl\\ypsilon\\app\\cdn\\CounterSvcIF.aidl
+ * Original file: C:\\Users\\yosi\\data\\workspace\\android\\CountDownTimer\\app\\src\\main\\aidl\\ypsilon\\app\\cdn\\CounterSvcIF.aidl
  */
 package ypsilon.app.cdn;
 public interface CounterSvcIF extends android.os.IInterface
