@@ -46,7 +46,7 @@ public class Caller {
 	}
 
 	public void say (int num) {
-		Integer intnum = new Integer(num);
+		Integer intnum = Integer.valueOf(num);
 		if (numIdMap.containsKey(intnum)) {
 			spool.play(numIdMap.get(intnum), 1.0f, 1.0f, 1, 0, 1.0f);
 		}

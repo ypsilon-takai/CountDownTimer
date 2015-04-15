@@ -11,6 +11,7 @@ public class CountService extends Service {
 
 	private int remainTime;
 	private int remainPreTime;
+    private int initialTime;
 
 	private boolean counting;
 
@@ -96,6 +97,7 @@ public class CountService extends Service {
 
 		if (!counting) {
 			remainTime = time;
+            initialTime = time;
 			remainPreTime = pretime;
 			return true;
 		} else {
@@ -160,6 +162,7 @@ public class CountService extends Service {
     		// *** call controler
     		message.putExtra("STATE", counting);
     		message.putExtra("TIME", remainPreTime);
+            message.putExtra("INIT", initialTime);
     		remainPreTime--;
     	} else if ( remainTime > 0){
 //    		Log.d("CountService", "cd 02");
@@ -167,9 +170,11 @@ public class CountService extends Service {
     		// *** call controler
     		message.putExtra("STATE", counting);
     		message.putExtra("TIME", remainTime);
+            message.putExtra("INIT", initialTime);
        		remainTime--;
     	} else if ( remainTime <= 0) {
-    		Log.d("CountService", "cd finish");
+
+            Log.d("CountService", "cd finish");
 			caller.say("finished");
 			ticktick.cancel();
 			counting = false;
@@ -177,7 +182,7 @@ public class CountService extends Service {
     		message.putExtra("STATE", counting);
 
     		if (refCount <= 0) {
-    			Log.d( "HLGT CS", "CountService Calling stopSerf()");
+    			Log.d( "HLGT CS", "CountService Calling stopSelf()");
     			this.stopSelf();
     		}
     	} else {
@@ -186,6 +191,7 @@ public class CountService extends Service {
     		// *** call controler
     		message.putExtra("STATE", counting);
     		message.putExtra("TIME", remainTime);
+            message.putExtra("INIT", initialTime);
     		remainTime--;
     	}
 

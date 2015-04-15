@@ -268,7 +268,9 @@ public class Control extends Activity implements ServiceConnection{
     	super.onStart();
 
 		Log.d( "HLGT Debug", "Control onStart()");
-    	
+
+        timerRunning = false;
+
     	// **************
     	//  Broadcast receiver
     	if (bcReceiver == null) {
@@ -279,15 +281,18 @@ public class Control extends Activity implements ServiceConnection{
 
     				int time = 0;
     				boolean csstate = message.getExtras().getBoolean("STATE");
-    				if (csstate == true) {
+    				if (csstate) {
 
 //        				Log.d( "HLGT Debug", "Control onReceive()" + csstate + " " + time);
 
-    					if (timerRunning == false) {
+    					if (!timerRunning) {
     		        		timerRunning = true;
     		        		setStartButtonsColor(true);
     		        		setStartButtonsText(Converter.formatTimeSec(setTimeVal));
     					}
+
+                        setTimeVal = message.getExtras().getInt("INIT", 0);
+                        setStartButtonsText(Converter.formatTimeSec(setTimeVal));
 
     					time = message.getExtras().getInt("TIME", 0);
     					tvTimeView.setText(Converter.formatTimeSec(time));
@@ -301,7 +306,6 @@ public class Control extends Activity implements ServiceConnection{
     			}
     		};
 
-
     		IntentFilter filter = new IntentFilter("YP_CDT_TIMECHANGE");
     		registerReceiver(bcReceiver, filter);
 
@@ -309,7 +313,7 @@ public class Control extends Activity implements ServiceConnection{
     		// service calls back when ready
 
     		
-    		if (bindToService == false) {
+    		if (!bindToService ) {
     			Log.d( "HLGT Debug", "Binding to service.");
     			Intent intent = new Intent(this, CountService.class);
         		startService(intent);
@@ -325,14 +329,14 @@ public class Control extends Activity implements ServiceConnection{
 		Log.d( "HLGT Debug", "Control onStop()");
 
     	// disconnecttimer service here
-    	if (bindToService == true) {
+    	if (bindToService) {
     		unbindService(this);
     		bindToService = false;
+            counterService = null;
 
-    		unregisterReceiver(bcReceiver);
+            unregisterReceiver(bcReceiver);
     		bcReceiver = null;
     	}
-
 
     	super.onStop();
     }
@@ -344,7 +348,7 @@ public class Control extends Activity implements ServiceConnection{
 
     	Bundle sstate = getCounterServiceState();
 		if (sstate != null) {
-			if (sstate.getBoolean("BUSY") == false) {
+			if (!sstate.getBoolean("BUSY")) {
 				try {
 
 					Log.d( "HLGT Debug", "CountService Calling stopService()");
