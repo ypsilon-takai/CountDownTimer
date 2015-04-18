@@ -22,7 +22,7 @@ public class Converter {
     private void initSoundData () {
 
     	wordToResid.put("start", R.raw.voice_start);
-    	wordToResid.put("finished", R.raw.horn_02);
+    	wordToResid.put("finished", R.raw.horn);
 
     	numToResid.put(0, R.raw.voice_000);
     	numToResid.put(1, R.raw.voice_001);
