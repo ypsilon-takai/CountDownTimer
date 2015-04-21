@@ -3,7 +3,7 @@
     <string name="app_name">カウントダウンタイマー</string>
 <string name="tg_button_on">スナップ</string>
 <string name="tg_button_off">スタート</string>
-<string name="tg_button_321">3,2,1スタート</string>
+<string name="tg_button_321">5,4...</string>
 <string name="tg_button_none">なし</string>
 <dimen name="time_button_height">60dp</dimen>
 <dimen name="time_button_width">60dp</dimen>
