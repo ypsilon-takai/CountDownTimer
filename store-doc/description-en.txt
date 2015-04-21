@@ -1,0 +1,26 @@
+
+設定した時刻を読み上げながらカウントダウンするタイマーです。
+開始5秒前から、5, 4, 3, 2, 1 のカウントダウンをすることもできます。
+
+Eashy-to-use Talking Countdown Timer.
+
+
+Easy-to-use Talking Countdown Timer.
+For sport, exercize, game, study, etc.. Find your own use case! 
+
+How to use.
+
+Six preset time buttons, 10, 5, 3, 2, 1 minute(s) and 30 seconds.
+
+It calls:
+ - Every 30 seconds above 1 minute.
+ - Every 5 seconds between 20 second and 1 minute.
+ - Every 1 second from 20 seconds.
+
+"5,4..." button: Pre-countdown for 5 seconds.
+
+"Quick" button: Start immediately when push any preset button.
+
+Flick over "Start" button and Big start button will appear. It is convenient to use by touch.
+
+

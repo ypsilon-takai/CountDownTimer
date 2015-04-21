@@ -1,0 +1,267 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="210mm"
+   height="297mm"
+   id="svg2"
+   version="1.1"
+   inkscape:version="0.48.4 r"
+   sodipodi:docname="logo.svg">
+  <defs
+     id="defs4" />
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="0.98994949"
+     inkscape:cx="273.56014"
+     inkscape:cy="695.22317"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer7"
+     showgrid="false"
+     showguides="true"
+     inkscape:guide-bbox="true"
+     inkscape:window-width="1168"
+     inkscape:window-height="887"
+     inkscape:window-x="221"
+     inkscape:window-y="84"
+     inkscape:window-maximized="0">
+    <sodipodi:guide
+       orientation="1.6876403e-008,1"
+       position="42.426407,899.03577"
+       id="guide4039" />
+    <sodipodi:guide
+       orientation="0,1"
+       position="-30.304576,399.01026"
+       id="guide4041" />
+    <sodipodi:guide
+       orientation="1,0"
+       position="101.01525,908.12714"
+       id="guide4045" />
+    <sodipodi:guide
+       orientation="1,0"
+       position="604.07122,906.10683"
+       id="guide4047" />
+    <sodipodi:guide
+       orientation="1,0"
+       position="352.54324,900.04592"
+       id="guide4051" />
+    <sodipodi:guide
+       orientation="0,1"
+       position="14.142136,647.50778"
+       id="guide4054" />
+    <sodipodi:guide
+       orientation="-0.70710678,0.70710678"
+       position="371.78571,665.71429"
+       id="guide4084" />
+  </sodipodi:namedview>
+  <metadata
+     id="metadata7">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:groupmode="layer"
+     id="layer8"
+     inkscape:label="black">
+    <rect
+       style="fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:58.40000152999999700;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+       id="rect4251"
+       width="627.30475"
+       height="597.00012"
+       x="46.467018"
+       y="56.351772" />
+  </g>
+  <g
+     inkscape:groupmode="layer"
+     id="layer2"
+     inkscape:label="Main"
+     style="display:inline">
+    <rect
+       style="fill:#d7d7d7;fill-opacity:1;stroke:#189b00;stroke-width:40.26716995;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+       id="rect3262"
+       width="460.35223"
+       height="458.33191"
+       x="121.86204"
+       y="174.1732"
+       ry="53.455563"
+       inkscape:export-filename="C:\Users\yosi\data\workspace\android\CountDownTimer\store-doc\tool_logo.png"
+       inkscape:export-xdpi="92.41993"
+       inkscape:export-ydpi="92.41993" />
+  </g>
+  <g
+     inkscape:groupmode="layer"
+     id="layer6"
+     inkscape:label="button">
+    <g
+       style="display:inline"
+       id="g4177"
+       transform="matrix(0.70710678,0.70710678,-0.70710678,0.70710678,843.33586,136.88567)"
+       inkscape:export-filename="C:\Users\yosi\data\workspace\android\CountDownTimer\store-doc\tool_logo.png"
+       inkscape:export-xdpi="92.41993"
+       inkscape:export-ydpi="92.41993">
+      <rect
+         ry="3.7740922"
+         y="306.36453"
+         x="-181.06984"
+         height="64.144699"
+         width="49.750019"
+         id="rect4157"
+         style="fill:#189b00;fill-opacity:1;stroke:#189b00;stroke-width:0.80000001;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none" />
+      <rect
+         ry="2.0725422"
+         y="302.51532"
+         x="-188.58086"
+         height="35.225052"
+         width="65.024544"
+         id="rect4157-8"
+         style="fill:#189b00;fill-opacity:1;stroke:#189b00;stroke-width:0.67776245;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;display:inline" />
+    </g>
+  </g>
+  <g
+     inkscape:groupmode="layer"
+     id="layer3"
+     inkscape:label="clock"
+     style="display:inline">
+    <path
+       sodipodi:type="arc"
+       style="fill:#ffffff;fill-opacity:1;stroke:#dd2c00;stroke-width:10.63033772;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+       id="path4043"
+       sodipodi:cx="408.60669"
+       sodipodi:cy="434.6539"
+       sodipodi:rx="144.95689"
+       sodipodi:ry="144.95689"
+       d="m 553.56358,434.6539 a 144.95689,144.95689 0 1 1 -289.91378,0 144.95689,144.95689 0 1 1 289.91378,0 z"
+       transform="matrix(1.2171402,0,0,1.2171402,-145.3649,-119.98129)"
+       inkscape:export-filename="C:\Users\yosi\data\workspace\android\CountDownTimer\store-doc\tool_logo.png"
+       inkscape:export-xdpi="92.41993"
+       inkscape:export-ydpi="92.41993" />
+  </g>
+  <g
+     inkscape:groupmode="layer"
+     id="layer5"
+     inkscape:label="redozone">
+    <g
+       id="g4111"
+       transform="matrix(0,-1,1,0,-26.543464,229.52321)"
+       inkscape:export-filename="C:\Users\yosi\data\workspace\android\CountDownTimer\store-doc\tool_logo.png"
+       inkscape:export-xdpi="92.41993"
+       inkscape:export-ydpi="92.41993">
+      <path
+         sodipodi:end="1.1433923"
+         sodipodi:start="0"
+         d="m -45.456863,383.6412 c 0,52.25097 -30.518624,99.68697 -78.069347,121.34551 L -178.797,383.6412 z"
+         sodipodi:ry="133.34013"
+         sodipodi:rx="133.34013"
+         sodipodi:cy="383.6412"
+         sodipodi:cx="-178.797"
+         id="path4091"
+         style="fill:#dd2c00;fill-opacity:1;stroke:#dd2c00;stroke-width:11.83100033;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+         sodipodi:type="arc" />
+      <path
+         sodipodi:end="1.1433923"
+         sodipodi:start="0"
+         d="m -45.456863,383.6412 c 0,52.25097 -30.518624,99.68697 -78.069347,121.34551 L -178.797,383.6412 z"
+         sodipodi:ry="133.34013"
+         sodipodi:rx="133.34013"
+         sodipodi:cy="383.6412"
+         sodipodi:cx="-178.797"
+         id="path4091-0"
+         style="fill:#ffffff;fill-opacity:1;stroke:#ffffff;stroke-width:11.83100033;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+         sodipodi:type="arc"
+         transform="matrix(0.89334289,0,0,0.90163417,-21.696743,36.056965)" />
+    </g>
+  </g>
+  <g
+     inkscape:groupmode="layer"
+     id="layer4"
+     inkscape:label="parts"
+     style="display:inline">
+    <g
+       id="g4133"
+       transform="translate(-4,10)"
+       inkscape:export-filename="C:\Users\yosi\data\workspace\android\CountDownTimer\store-doc\tool_logo.png"
+       inkscape:export-xdpi="92.41993"
+       inkscape:export-ydpi="92.41993">
+      <path
+         transform="translate(-7.5,-6.4285714)"
+         d="m 368.70567,412.93561 c 0,4.46313 -3.61808,8.08122 -8.08122,8.08122 -4.46313,0 -8.08122,-3.61809 -8.08122,-8.08122 0,-4.46314 3.61809,-8.08122 8.08122,-8.08122 4.46314,0 8.08122,3.61808 8.08122,8.08122 z"
+         sodipodi:ry="8.0812197"
+         sodipodi:rx="8.0812197"
+         sodipodi:cy="412.93561"
+         sodipodi:cx="360.62445"
+         id="path4080"
+         style="fill:#000000;fill-opacity:1;stroke:#dd2c00;stroke-width:11.83100033;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+         sodipodi:type="arc" />
+      <path
+         sodipodi:nodetypes="cccc"
+         inkscape:connector-curvature="0"
+         id="path4088"
+         d="M 344.30738,396.31242 464.64285,293.79075 362.85714,415.93361 z"
+         style="fill:#dd2c00;fill-opacity:1;stroke:#dd2c00;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+    </g>
+    <path
+       sodipodi:type="arc"
+       style="fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:11.83100033;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;display:inline"
+       id="path4056"
+       sodipodi:cx="367.19046"
+       sodipodi:cy="275.0498"
+       sodipodi:rx="14.647211"
+       sodipodi:ry="14.647211"
+       d="m 381.83767,275.0498 a 14.647211,14.647211 0 1 1 -29.29442,0 14.647211,14.647211 0 1 1 29.29442,0 z"
+       transform="translate(-15.223732,4.4441542)"
+       inkscape:export-xdpi="92.41993"
+       inkscape:export-ydpi="92.41993"
+       inkscape:export-filename="C:\Users\yosi\data\workspace\android\CountDownTimer\store-doc\tool_logo.png" />
+  </g>
+  <g
+     inkscape:groupmode="layer"
+     id="layer7"
+     inkscape:label="mask">
+    <rect
+       style="fill:none;stroke:#000000;stroke-width:54.58975601;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+       id="rect4226"
+       width="379.58701"
+       height="379.58701"
+       x="252.65334"
+       y="126.16748"
+       ry="97.445084"
+       inkscape:export-filename="C:\Users\yosi\data\workspace\android\CountDownTimer\store-doc\icon.png"
+       inkscape:export-xdpi="92.41993"
+       inkscape:export-ydpi="92.41993" />
+    <rect
+       style="fill:#ffffff;fill-opacity:1;stroke:#ffffff;stroke-width:84.54678345;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+       id="rect4228"
+       width="600.14783"
+       height="89.010605"
+       x="45.39827"
+       y="553.28827"
+       ry="44.505302" />
+    <rect
+       style="fill:#ffffff;fill-opacity:1;stroke:#ffffff;stroke-width:129.46141052;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+       id="rect4228-5"
+       width="249.15698"
+       height="502.70526"
+       x="-66.49472"
+       y="131.27844"
+       ry="0" />
+  </g>
+</svg>
