@@ -4,7 +4,7 @@ android {
     buildToolsVersion "21.1.2"
     defaultConfig {
         applicationId "ypsilon.app.cdn"
-        minSdkVersion 19
+        minSdkVersion 15
         targetSdkVersion 21
     }
     buildTypes {
