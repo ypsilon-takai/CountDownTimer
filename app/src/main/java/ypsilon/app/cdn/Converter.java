@@ -2,7 +2,6 @@ package ypsilon.app.cdn;
 
 import java.util.HashMap;
 
-import android.util.Log;
 
 
 public class Converter {
@@ -113,4 +112,25 @@ public class Converter {
     	return output;
     }
 
+    static public String buttonTimeSec(int seconds) {
+        String output;
+
+//    	Log.d( "HLGT Debug", "seconds = " + seconds );
+
+        long minutes = seconds / 60;
+
+        seconds = seconds % 60;
+        minutes = minutes % 60;
+
+        String secondsD = String.valueOf(seconds);
+        String minutesD = String.valueOf(minutes);
+
+        if (seconds < 60) {
+            output = secondsD + R.string.text_sec;
+        } else {
+            output = minutesD + R.string.text_min;
+        }
+
+        return output;
+    }
 }
