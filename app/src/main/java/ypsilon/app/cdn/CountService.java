@@ -84,6 +84,10 @@ public class CountService extends Service {
 			CountService.this.end();
 		}
 
+        public void pause() { CountService.this.pause(); }
+
+        public void restart() { CountService.this.restart(); }
+
 		public Bundle getState() throws RemoteException {
 			return CountService.this.getState();
 		}
@@ -125,6 +129,17 @@ public class CountService extends Service {
 		counting = false;
 	}
 
+    private void pause () {
+        Log.d( "HLGT CS", "CountService pause()");
+
+        counting = false;
+    }
+
+    private void restart () {
+        Log.d( "HLGT CS", "CountService restart()");
+
+        counting = true;
+    }
 	private void end () {
 
 		Log.d( "HLGT CS", "CountService end()");
