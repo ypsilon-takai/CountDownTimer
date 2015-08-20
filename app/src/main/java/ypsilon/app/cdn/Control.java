@@ -1,9 +1,12 @@
 package ypsilon.app.cdn;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.app.Dialog;
 import android.content.BroadcastReceiver;
 import android.content.ComponentName;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.ServiceConnection;
@@ -13,13 +16,20 @@ import android.os.IBinder;
 import android.os.RemoteException;
 import android.graphics.Typeface;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.NumberPicker;
 import android.widget.TextView;
 import android.widget.ToggleButton;
 import android.widget.ViewFlipper;
+import java.util.List;
+import java.util.ListIterator;
+
+import static java.util.Arrays.asList;
 
 /**
  * Main window for the timer.
@@ -42,12 +52,19 @@ public class Control extends Activity implements ServiceConnection{
     private Button bt10;
     private Button bt11;
     private Button bt12;
+    private List<Button> buttonList;
+
     private ToggleButton tgbImmediate;
     private ToggleButton tgbPrecall;
+
+    // Preset button time values
+    private int[] btTimesecList = {600, 300, 180, 120, 60, 30};
 
     // One button layout
     private Button btStartStopBig;
 
+    // Dialog ids
+    static final int DIALOG_SET_TIME = 0;
 
     /**
      * Set time value.
@@ -132,6 +149,8 @@ public class Control extends Activity implements ServiceConnection{
         bt10 = (Button)findViewById(R.id.Bt_10);
         bt11 = (Button)findViewById(R.id.Bt_11);
         bt12 = (Button)findViewById(R.id.Bt_12);
+        buttonList = asList(bt00, bt01, bt02, bt10, bt11, bt12);
+
         tgbImmediate = (ToggleButton)findViewById(R.id.TG_immediate);
         tgbPrecall = (ToggleButton)findViewById(R.id.TG_countdown);
 
@@ -202,50 +221,23 @@ public class Control extends Activity implements ServiceConnection{
         // * Number buttons
         //
         // Functions for number button clicked.
-        bt00.setOnClickListener(new View.OnClickListener() {
-			public void onClick(View v) {
-				if (! timerRunning) {
-					setTimeOnButtonPush( 10*60);
-				}
-			}
-		});
-        bt01.setOnClickListener(new View.OnClickListener() {
-			public void onClick(View v) {
-				if (! timerRunning) {
-					setTimeOnButtonPush( 5*60);
-				}
-			}
-		});
-        bt02.setOnClickListener(new View.OnClickListener() {
-			public void onClick(View v) {
-				if (! timerRunning) {
-					setTimeOnButtonPush( 3*60);
-				}
-			}
-		});
-        bt10.setOnClickListener(new View.OnClickListener() {
-			public void onClick(View v) {
-				if (! timerRunning) {
-					setTimeOnButtonPush( 2*60);
-				}
-			}
-		});
-        bt11.setOnClickListener(new View.OnClickListener() {
-			public void onClick(View v) {
-				if (! timerRunning) {
-					setTimeOnButtonPush( 1*60);
-				}
-			}
-		});
-        bt12.setOnClickListener(new View.OnClickListener() {
-			public void onClick(View v) {
-				if (! timerRunning) {
-					setTimeOnButtonPush(30);
-				}
-			}
-		});
-
-
+        for (ListIterator<Button> it = buttonList.listIterator(); it.hasNext();) {
+            final int idx = it.nextIndex();
+            Button bt = it.next();
+            bt.setOnClickListener(new View.OnClickListener() {
+                public void onClick(View v) {
+                    if (!timerRunning) {
+                        setTimeOnButtonPush(btTimesecList[idx]);
+                    }
+                }
+            });
+            bt.setOnLongClickListener(new View.OnLongClickListener() {
+                public boolean onLongClick(View v) {
+                    showTimeInputDialog(idx);
+                    return true;
+                }
+            });
+        }
     }
 
     private void setStartButtonsColor (boolean running) {
@@ -367,7 +359,7 @@ public class Control extends Activity implements ServiceConnection{
 
     /**
      * Gereric function to setup number buttons.
-     * @param int Setting time.
+     * @param timesec Setting time.
      */
     private void setTimeOnButtonPush (int timesec) {
 		setTimeVal = timesec;
@@ -492,5 +484,69 @@ public class Control extends Activity implements ServiceConnection{
 			return null;
 		}
 	}
+
+    // time input dialog
+    @Override
+    protected Dialog onCreateDialog(int id) {
+        Dialog dialog;
+        switch(id) {
+            case DIALOG_SET_TIME:
+                // do the work to define the pause Dialog
+                dialog = null;
+                break;
+            default:
+                dialog = null;
+        }
+        return dialog;
+    }
+
+    protected void showTimeInputDialog (final int buttonIdx) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        LayoutInflater inflater = LayoutInflater.from(this);
+        //レイアウトファイルからビューを取得
+        final View dialog_view = inflater.inflate(R.layout.numberinput, null);
+
+        NumberPicker numPicker = (NumberPicker)dialog_view.findViewById(R.id.numberPicker);
+        numPicker.setMaxValue(10);
+        numPicker.setMinValue(0);
+
+        TextView buttonName = (TextView)dialog_view.findViewById(R.id.txButtunName);
+        buttonName.setText(getString(R.string.dialog_button_name, buttonIdx + 1));
+
+        //レイアウト、題名、OKボタンとキャンセルボタンをつけてダイアログ作成
+        builder.setView(dialog_view)
+                .setTitle(R.string.dialog_title)
+                .setPositiveButton(R.string.dialog_set, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        CheckBox cb30sec = (CheckBox)dialog_view.findViewById(R.id.cbThirtySec);
+                        NumberPicker numPicker = (NumberPicker)dialog_view.findViewById(R.id.numberPicker);
+                        int timesec = 0;
+                        timesec = numPicker.getValue() * 60;
+                        if (cb30sec.isChecked() && numPicker.getValue() < 10) {
+                            timesec += 30;
+                        }
+                        btTimesecList[buttonIdx] = timesec;
+
+                        buttonList.get(buttonIdx).setText(Converter.formatTimeSec(timesec));
+
+                    }
+                })
+                .setNegativeButton(R.string.dialog_cancel, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which)
+                    {
+                    /*キャンセルされたときの処理*/
+                    }
+                });
+
+        AlertDialog myDialog = builder.create();
+
+        //ダイアログ画面外をタッチされても消えないようにする。
+        myDialog.setCanceledOnTouchOutside(false);
+
+        //ダイアログ表示
+        myDialog.show();
+    }
 
 }

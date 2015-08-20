@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">カウントダウンタイマー</string>
+    <string name="app_name">カウントダウンタイマーL</string>
 <string name="tg_button_on">スナップ</string>
 <string name="tg_button_off">スタート</string>
 <string name="tg_button_321">5,4...</string>
@@ -18,4 +18,11 @@
 <string name="init_0min">00:00</string>
 <string name="text_start">スタート</string>
 <string name="text_init">初期化中</string>
+    <string name="dialog_title">時間変更</string>
+    <string name="text_min">分</string>
+    <string name="text_sec">秒</string>
+    <string name="dialog_set">設定</string>
+    <string name="dialog_cancel">キャンセル</string>
+    <string name="dialog_button_name">ボダン %1$d</string>
+    <string name="dialog_30sec">30秒</string>
 </resources>
