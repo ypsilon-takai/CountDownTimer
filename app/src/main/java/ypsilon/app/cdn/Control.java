@@ -58,9 +58,11 @@ public class Control extends Activity implements ServiceConnection{
     private ToggleButton tgbPrecall;
 
     // Preset button time values
-    private int[] btTimesecList = {600, 300, 180, 120, 60, 30};
+    private short[] btTimesecList;
 
-    // One button layout
+
+
+	// One button layout
     private Button btStartStopBig;
 
     // Dialog ids
@@ -119,6 +121,7 @@ public class Control extends Activity implements ServiceConnection{
 
         Log.d( "HLGT Debug", "Control onCreate()");
 
+
         setTimeVal = 60;
         preTimeVal = 5;
 
@@ -142,6 +145,7 @@ public class Control extends Activity implements ServiceConnection{
         // flipper
         vfSelector = (ViewFlipper)findViewById(R.id.VF_switcher);
 
+		// buttons
         btStartStop = (Button)findViewById(R.id.Bt_Main);
         bt00 = (Button)findViewById(R.id.Bt_00);
         bt01 = (Button)findViewById(R.id.Bt_01);
@@ -156,6 +160,8 @@ public class Control extends Activity implements ServiceConnection{
 
         btStartStopBig = (Button)findViewById(R.id.Bt_Sub_Main);
 
+
+
         // Converter class provides format exchange functionality.
         tvTimeView.setText(Converter.formatTimeSec(setTimeVal));
         btStartStop.setText(getResources().getString(R.string.text_init));
@@ -166,8 +172,8 @@ public class Control extends Activity implements ServiceConnection{
 
         // Start or stop countdown.
 		btStartStop.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-				if (! flicked ) {
+			public void onClick(View v) {
+				if (!flicked) {
 					startOrStop();
 				}
 			}
@@ -254,12 +260,15 @@ public class Control extends Activity implements ServiceConnection{
     	btStartStop.setText(s);
     	btStartStopBig.setText(s);
     }
-    
+
+    private void setPresetButtonText (Button bt, String s) {
+        bt.setText(s + getString(R.string.text_min));
+    }
     @Override
     public void onStart () {
     	super.onStart();
 
-		Log.d( "HLGT Debug", "Control onStart()");
+		Log.d("HLGT Debug", "Control onStart()");
 
         timerRunning = false;
 
@@ -313,6 +322,32 @@ public class Control extends Activity implements ServiceConnection{
     		}
     	}
 
+    }
+
+    @Override
+    public void onSaveInstanceState (Bundle savedInstanceState) {
+        savedInstanceState.putShortArray("buttonValue", btTimesecList);
+
+        super.onSaveInstanceState(savedInstanceState);
+    }
+
+    @Override
+    public void onRestoreInstanceState (Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+
+        // restore button value
+        short[] strdBtValues = savedInstanceState.getShortArray("buttonValue");
+        if (strdBtValues != null) {
+            btTimesecList = strdBtValues;
+        } else {
+            btTimesecList = new short[]{600, 300, 180, 120, 60, 30};
+        }
+
+        for (ListIterator<Button> it = buttonList.listIterator(); it.hasNext();) {
+            final int idx = it.nextIndex();
+            Button bt = it.next();
+            bt.setText(Converter.buttonTimeSec(btTimesecList[idx], this));
+        }
     }
 
     @Override
@@ -521,11 +556,14 @@ public class Control extends Activity implements ServiceConnection{
                     public void onClick(DialogInterface dialog, int which) {
                         CheckBox cb30sec = (CheckBox)dialog_view.findViewById(R.id.cbThirtySec);
                         NumberPicker numPicker = (NumberPicker)dialog_view.findViewById(R.id.numberPicker);
-                        int timesec = 0;
-                        timesec = numPicker.getValue() * 60;
-                        if (cb30sec.isChecked() && numPicker.getValue() < 10) {
-                            timesec += 30;
+                        short timesec = 0;
+                        timesec = (short)(numPicker.getValue() * 60);
+                        if (timesec == 0) {
+                            timesec = 30;
                         }
+                        //if (cb30sec.isChecked() && numPicker.getValue() < 10) {
+                        //    timesec += 30;
+                        //}
                         btTimesecList[buttonIdx] = timesec;
 
                         buttonList.get(buttonIdx).setText(Converter.formatTimeSec(timesec));
@@ -534,8 +572,7 @@ public class Control extends Activity implements ServiceConnection{
                 })
                 .setNegativeButton(R.string.dialog_cancel, new DialogInterface.OnClickListener() {
                     @Override
-                    public void onClick(DialogInterface dialog, int which)
-                    {
+                    public void onClick(DialogInterface dialog, int which) {
                     /*キャンセルされたときの処理*/
                     }
                 });
