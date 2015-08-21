@@ -10,11 +10,13 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.ServiceConnection;
+import android.content.SharedPreferences;
 import android.media.AudioManager;
 import android.os.Bundle;
 import android.os.IBinder;
 import android.os.RemoteException;
 import android.graphics.Typeface;
+import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
@@ -28,6 +30,7 @@ import android.widget.ToggleButton;
 import android.widget.ViewFlipper;
 import java.util.List;
 import java.util.ListIterator;
+import java.util.prefs.PreferenceChangeEvent;
 
 import static java.util.Arrays.asList;
 
@@ -203,33 +206,55 @@ public class Control extends Activity implements ServiceConnection{
         //
         // Big button NOT act with short click.
         btStartStopBig.setOnClickListener(new View.OnClickListener() {
-			public void onClick(View v) {
-				// Do nothing
-			}
-		});
+            public void onClick(View v) {
+                // Do nothing
+            }
+        });
         // Big button act with long click.
         btStartStopBig.setOnLongClickListener(new View.OnLongClickListener() {
-			public boolean onLongClick(View v) {
-				startOrStop();
-				return true;
-			}
-		});
+            public boolean onLongClick(View v) {
+                startOrStop();
+                return true;
+            }
+        });
         // Flip button window when user wipe on big button.
         btStartStopBig.setOnTouchListener(new View.OnTouchListener() {
-			public boolean onTouch(View v, MotionEvent event) {
-				flipTemplate(event);
-				return false;
-			}
-		});
+            public boolean onTouch(View v, MotionEvent event) {
+                flipTemplate(event);
+                return false;
+            }
+        });
         btStartStopBig.setEnabled(false);
 
-		// ********
+
+        // restore state
+        if (savedInstanceState != null) {
+            // restore button value
+            short[] strdBtValues = savedInstanceState.getShortArray("buttonValue");
+            if (strdBtValues != null) {
+                btTimesecList = strdBtValues;
+            } else {
+                btTimesecList = new short[]{600, 300, 180, 120, 60, 30};
+            }
+        } else {
+            SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+            btTimesecList = new short[6];
+            btTimesecList[0] = (short)(prefs.getInt("bt0", 600));
+            btTimesecList[1] = (short)(prefs.getInt("bt1", 300));
+            btTimesecList[2] = (short)(prefs.getInt("bt2", 180));
+            btTimesecList[3] = (short)(prefs.getInt("bt3", 120));
+            btTimesecList[4] = (short)(prefs.getInt("bt4", 60));
+            btTimesecList[5] = (short)(prefs.getInt("bt5", 30));
+        }
+
+        // ********
         // * Number buttons
         //
         // Functions for number button clicked.
         for (ListIterator<Button> it = buttonList.listIterator(); it.hasNext();) {
             final int idx = it.nextIndex();
             Button bt = it.next();
+            bt.setText(Converter.buttonTimeSec(btTimesecList[idx], this));
             bt.setOnClickListener(new View.OnClickListener() {
                 public void onClick(View v) {
                     if (!timerRunning) {
@@ -244,6 +269,7 @@ public class Control extends Activity implements ServiceConnection{
                 }
             });
         }
+
     }
 
     private void setStartButtonsColor (boolean running) {
@@ -280,7 +306,6 @@ public class Control extends Activity implements ServiceConnection{
     			@Override
     			public void onReceive(Context context, Intent message) {
 
-    				int time = 0;
     				boolean csstate = message.getExtras().getBoolean("STATE");
     				if (csstate) {
 
@@ -295,7 +320,7 @@ public class Control extends Activity implements ServiceConnection{
                         setTimeVal = message.getExtras().getInt("INIT", 0);
                         setStartButtonsText(Converter.formatTimeSec(setTimeVal));
 
-    					time = message.getExtras().getInt("TIME", 0);
+    					int time = message.getExtras().getInt("TIME", 0);
     					tvTimeView.setText(Converter.formatTimeSec(time));
 
     				} else {
@@ -364,6 +389,17 @@ public class Control extends Activity implements ServiceConnection{
             unregisterReceiver(bcReceiver);
     		bcReceiver = null;
     	}
+
+        // save button values
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+        SharedPreferences.Editor edit = prefs.edit();
+        edit.putInt("bt0", btTimesecList[0]);
+        edit.putInt("bt1", btTimesecList[1]);
+        edit.putInt("bt2", btTimesecList[2]);
+        edit.putInt("bt3", btTimesecList[3]);
+        edit.putInt("bt4", btTimesecList[4]);
+        edit.putInt("bt5", btTimesecList[5]);
+        edit.commit();
 
     	super.onStop();
     }
@@ -554,10 +590,8 @@ public class Control extends Activity implements ServiceConnection{
                 .setPositiveButton(R.string.dialog_set, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        CheckBox cb30sec = (CheckBox)dialog_view.findViewById(R.id.cbThirtySec);
-                        NumberPicker numPicker = (NumberPicker)dialog_view.findViewById(R.id.numberPicker);
-                        short timesec = 0;
-                        timesec = (short)(numPicker.getValue() * 60);
+						NumberPicker numPicker = (NumberPicker)dialog_view.findViewById(R.id.numberPicker);
+                        short timesec = (short)(numPicker.getValue() * 60);
                         if (timesec == 0) {
                             timesec = 30;
                         }
@@ -566,7 +600,7 @@ public class Control extends Activity implements ServiceConnection{
                         //}
                         btTimesecList[buttonIdx] = timesec;
 
-                        buttonList.get(buttonIdx).setText(Converter.formatTimeSec(timesec));
+                        buttonList.get(buttonIdx).setText(Converter.buttonTimeSec(timesec, getApplicationContext()));
 
                     }
                 })
