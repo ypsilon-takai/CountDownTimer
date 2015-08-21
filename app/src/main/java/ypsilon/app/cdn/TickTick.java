@@ -11,7 +11,7 @@ public class TickTick {
 
 	Handler handler = new android.os.Handler();
 
-	public void onTick() {};
+	public void onTick() {}
 
 	public TickTick() {}
 
