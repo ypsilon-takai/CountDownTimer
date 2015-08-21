@@ -25,4 +25,5 @@
     <string name="dialog_cancel">キャンセル</string>
     <string name="dialog_button_name">ボダン %1$d</string>
     <string name="dialog_30sec">30秒</string>
+    <string name="dialog_instruction">0を選択すると30秒が設定されます。</string>
 </resources>

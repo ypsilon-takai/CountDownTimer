@@ -26,4 +26,5 @@
     <string name="dialog_button_name">Button%1$d</string>
     <string name="dialog_30sec">30sec</string>
     <dimen name="dialog_text_size">24sp</dimen>
+    <string name="dialog_instruction">If you choose 0, 30 sec will be set.</string>
 </resources>
