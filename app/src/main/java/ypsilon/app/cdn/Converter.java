@@ -116,11 +116,11 @@ public class Converter {
 
 //    	Log.d( "HLGT Debug", "seconds = " + seconds );
 
-        int minutes = seconds / 60;
-        seconds = seconds % 60;
+        int min = seconds / 60;
+        int sec = seconds % 60;
 
-        String secondsD = String.valueOf(seconds);
-        String minutesD = String.valueOf(minutes);
+        String secondsD = String.valueOf(sec);
+        String minutesD = String.valueOf(min);
 
         if (seconds < 60) {
             output = secondsD + ct.getString(R.string.text_sec);
