@@ -1,8 +1,8 @@
 package ypsilon.app.cdn;
 
+import android.content.Context;
 import java.util.HashMap;
 
-import android.util.Log;
 
 
 public class Converter {
@@ -96,10 +96,8 @@ public class Converter {
 
 //    	Log.d( "HLGT Debug", "seconds = " + seconds );
 
-       	long minutes = seconds / 60;
-
+       	int minutes = seconds / 60;
     	seconds = seconds % 60;
-    	minutes = minutes % 60;
 
     	String secondsD = String.valueOf(seconds);
     	String minutesD = String.valueOf(minutes);
@@ -113,4 +111,23 @@ public class Converter {
     	return output;
     }
 
+    static public String buttonTimeSec(int seconds, Context ct) {
+        String output;
+
+//    	Log.d( "HLGT Debug", "seconds = " + seconds );
+
+        int min = seconds / 60;
+        int sec = seconds % 60;
+
+        String secondsD = String.valueOf(sec);
+        String minutesD = String.valueOf(min);
+
+        if (seconds < 60) {
+            output = secondsD + ct.getString(R.string.text_sec);
+        } else {
+            output = minutesD + ct.getString(R.string.text_min);
+        }
+
+        return output;
+    }
 }
