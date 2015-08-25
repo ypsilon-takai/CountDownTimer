@@ -1,7 +1,15 @@
 .gradle
-/local.properties
+local.properties
+
 .idea/
-.DS_Store
+!.idea/gradle.xml
+*.ipr
+*.iml
+
 /build
+
+.DS_Store
+
 app/build
+/captures
 *.apk
