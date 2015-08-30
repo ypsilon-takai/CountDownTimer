@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Countdown Timer</string>
+    <string name="app_name">Countdown Timer L</string>
     <string name="tg_button_on">Quick</string>
     <string name="tg_button_off">With Start</string>
     <string name="tg_button_321">5,4...</string>
@@ -23,7 +23,7 @@
     <string name="text_sec">sec</string>
     <string name="dialog_set">Set</string>
     <string name="dialog_cancel">Cancel</string>
-    <string name="dialog_button_name">Button%1$d</string>
+    <string name="dialog_button_name">Button %1$d</string>
     <string name="dialog_30sec">30sec</string>
     <dimen name="dialog_text_size">24sp</dimen>
     <string name="dialog_instruction">If you choose 0, 30 sec will be set.</string>
