@@ -1,0 +1,20 @@
+﻿<!--Document-->
+<Document FileVersion="1.0">
+    <ExportImageSettings FileName="" JpegQuality="95" ResizeMode="KeepOriginalSize" ImageZoomFactor="100" ImageResizeWidth="0" ImageResizeHeight="0" ImageType="IMG_UNKNOWN" />
+    <ImageOptions IsNegative="False" IsGrayscale="False" IsSepia="False" Rotation="0">
+        <BrightnessContrast Brightness="0" Contrast="0" />
+        <HueSaturation Hue="0" Saturation="0" Lightness="0" />
+        <EmbossSettings UseEmboss="False" Angle="45" Strength="10" GreyLevel="160" />
+        <Canvas>
+            <Box Left="0" Top="0" Width="1074" Height="1694" />
+            <BackColor Alpha="255" R="255" G="255" B="255" />
+        </Canvas>
+        <Flip HorizontalFlip="False" VerticalFlip="False" />
+    </ImageOptions>
+    <Layers>
+        <Layer Name="Layer1" Visible="True" LockedShapesIndex="">
+            <Shapes />
+        </Layer>
+    </Layers>
+    <Snapshots />
+</Document>
