@@ -254,7 +254,7 @@ public class Control extends Activity implements ServiceConnection{
         for (ListIterator<Button> it = buttonList.listIterator(); it.hasNext();) {
             final int idx = it.nextIndex();
             Button bt = it.next();
-            bt.setText(Converter.buttonTimeSec(btTimesecList[idx], this));
+            bt.setText(Converter.buttonTimeSec(btTimesecList[idx], getApplicationContext()));
             bt.setOnClickListener(new View.OnClickListener() {
                 public void onClick(View v) {
                     if (!timerRunning) {
